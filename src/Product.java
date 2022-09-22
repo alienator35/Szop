@@ -1,9 +1,8 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Product {
-    private BigDecimal hammerPrice = new BigDecimal("15");
-    private BigDecimal breadPrice = new BigDecimal("2.30");
-    private BigDecimal orangeJuicePrice = new BigDecimal("4");
+    private long id;
 
 
     private String productName;
@@ -12,31 +11,29 @@ public class Product {
     private BigDecimal price;
 
     //Produkty są magiczne i wszystkie tego samego typu tracą ważność tego samego dnia jak coś. KappaPride
-    private String expirationDate;
+    private LocalDate expirationDate;
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public Product(String productName, BigDecimal price, int quantity, String expirationDate) {
+    public void setProductName(String productName) {
         this.productName = productName;
-        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-
-    public BigDecimal getHammerPrice() {
-        return hammerPrice;
-    }
-
-    public BigDecimal getBreadPrice() {
-        return breadPrice;
-    }
-
-    public BigDecimal getOrangeJuicePrice() {
-        return orangeJuicePrice;
-    }
-
-
-    public String getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 

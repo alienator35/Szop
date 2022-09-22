@@ -1,26 +1,61 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Invoice {
     private String buyer;
-    private String buyDate;
+    private LocalDate buyDate;
     private BigDecimal priceForAll;
     private String productBought;
     private BigDecimal pricePlusTax;
+    private int howMuchBought;
 
+    public void setBuyer(String buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setBuyDate(LocalDate buyDate) {
+        this.buyDate = buyDate;
+    }
+
+    public String getBuyer() {
+        return buyer;
+    }
+
+    public LocalDate getBuyDate() {
+        return buyDate;
+    }
+
+    public BigDecimal getPriceForAll() {
+        return priceForAll;
+    }
+
+    public String getProductBought() {
+        return productBought;
+    }
+
+    public BigDecimal getPricePlusTax() {
+        return pricePlusTax;
+    }
+
+    public void setPriceForAll(BigDecimal priceForAll) {
+        this.priceForAll = priceForAll;
+    }
+
+    public void setProductBought(String productBought) {
+        this.productBought = productBought;
+    }
+
+    public void setPricePlusTax(BigDecimal pricePlusTax) {
+        this.pricePlusTax = pricePlusTax;
+    }
+
+    public void setHowMuchBought(int howMuchBought) {
+        this.howMuchBought = howMuchBought;
+    }
     public int getHowMuchBought() {
         return howMuchBought;
     }
 
-    private int howMuchBought;
 
-    public Invoice(String buyer, int howMuchBought, String buyDate,String productBought, BigDecimal priceForAll, BigDecimal pricePlusTax){
-        this.buyer = buyer;
-        this.howMuchBought = howMuchBought;
-        this.buyDate = buyDate;
-        this.productBought = productBought;
-        this.priceForAll = priceForAll;
-        this.pricePlusTax = pricePlusTax;
-
-    }
 
 }
