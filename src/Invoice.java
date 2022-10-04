@@ -52,10 +52,10 @@ public class Invoice {
     public void setHowMuchBought(int howMuchBought) {
         this.howMuchBought = howMuchBought;
     }
+
     public int getHowMuchBought() {
         return howMuchBought;
     }
-
 
 
 }
