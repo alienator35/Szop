@@ -12,12 +12,16 @@ public class Shop {
 
         InvoiceService invoiceService = new InvoiceService();
         Invoice invoice1 = invoiceService.generateInvoice(product1, "Krzyś Chmura");
-
-        System.out.println(invoice1.getBuyer() + " " + invoice1.getProductBought() + " " + invoice1.getHowMuchBought());
+        System.out.println(invoice1.getBuyer() + " kupił " + invoice1.getProductBought() + ". Ilość: " + invoice1.getHowMuchBought() + ". Netto: " + invoice1.getPriceForAll() + ". Brutto: " + invoice1.getPricePlusTax());
 
         OutService outService = new OutService();
         ProductOut out1 = outService.removeItem(product1, invoice1);
         product1.setQuantity(product1.getQuantity() - out1.getQuantityOutOfShop());
+        System.out.println(product1.getProductName() + " " + product1.getQuantity());
+
+        InService inService = new InService();
+        ProductIn in1 = inService.addItem(20, "Hammer");
+        product1.setQuantity(product1.getQuantity() + in1.getQuanityIntoShop());
         System.out.println(product1.getProductName() + " " + product1.getQuantity());
 
 
