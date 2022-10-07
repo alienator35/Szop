@@ -3,12 +3,13 @@ import java.time.LocalDate;
 
 public class InvoiceService {
 
-    public Invoice generateInvoice(Product product, String buyer) {
+    public Invoice generateInvoice(Product product,Order order) {
+//        Order newOrder = new Order();
         Invoice invoice = new Invoice();
-        invoice.setProductBought(product.getProductName());
-        invoice.setBuyer(buyer);
-        invoice.setBuyDate(LocalDate.of(2022, 9, 22));
-        invoice.setHowMuchBought(10);
+        invoice.setProductBought(order.getProductBought());
+        invoice.setBuyer(order.getBuyer());
+        invoice.setBuyDate(order.getBuyDate());
+        invoice.setHowMuchBought(order.getHowMuchBought());
         invoice.setPriceForAll(product.getPrice().multiply(new BigDecimal(invoice.getHowMuchBought())));
         invoice.setPricePlusTax(invoice.getPriceForAll().multiply(new BigDecimal("0.23")).add(invoice.getPriceForAll()));
         return invoice;

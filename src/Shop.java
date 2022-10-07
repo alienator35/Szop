@@ -1,18 +1,28 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Shop {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+
+
         ProductService productService = new ProductService();
         Product product1 = productService.addProduct();
+
+        OrderService orderService = new OrderService();
+        Order order1 = orderService.generateOrder("E:\\Shop Order.txt");
 
 
         System.out.println(product1.getProductName() + " " + product1.getQuantity());
 
         InvoiceService invoiceService = new InvoiceService();
-        Invoice invoice1 = invoiceService.generateInvoice(product1, "Krzyś Chmura");
-        System.out.println(invoice1.getBuyer() + " kupił " + invoice1.getProductBought() + ". Ilość: " + invoice1.getHowMuchBought() + ". Netto: " + invoice1.getPriceForAll() + ". Brutto: " + invoice1.getPricePlusTax());
+        Invoice invoice1 = invoiceService.generateInvoice(product1, order1);
+        System.out.println(invoice1.getBuyer() + " kupił " + invoice1.getProductBought() + ". Ilość: " + invoice1.getHowMuchBought() + ". Netto: " + invoice1.getPriceForAll() + ". Brutto: " + invoice1.getPricePlusTax() + " " + invoice1.getBuyDate());
 
         OutService outService = new OutService();
         ProductOut out1 = outService.removeItem(product1, invoice1);
@@ -23,23 +33,6 @@ public class Shop {
         ProductIn in1 = inService.addItem(20, "Hammer");
         product1.setQuantity(product1.getQuantity() + in1.getQuanityIntoShop());
         System.out.println(product1.getProductName() + " " + product1.getQuantity());
-
-
-//
-//        ProductOut[] lostProducts = new ProductOut[2];
-//
-//        lostProducts[0] = new ProductOut();
-//        lostProducts[0].setProductOutOfShop("Hammer");
-//        lostProducts[0].setQuantityOutOfShop(10);
-//
-//        lostProducts[1] = new ProductOut();
-//        lostProducts[1].setProductOutOfShop("Orange Juice");
-//        lostProducts[1].setQuantityOutOfShop(33);
-//
-//
-//             for (Product i : on) {
-//             System.out.println(i.getProductName() + " costs " + i.getPrice() + " $. We have " + i.getQuantity() + " " + i.getProductName() + "s, expiration date is " + i.getExpirationDate());
-//          }
 
 
     }
