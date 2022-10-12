@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class Shop {
     public static void main(String[] args) throws FileNotFoundException {
 
-
         ProductService productService = new ProductService();
         Product product1 = productService.addProduct();
 
