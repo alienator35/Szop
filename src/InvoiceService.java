@@ -4,7 +4,6 @@ import java.time.LocalDate;
 public class InvoiceService {
 
     public Invoice generateInvoice(Product product,Order order) {
-//        Order newOrder = new Order();
         Invoice invoice = new Invoice();
         invoice.setProductBought(order.getProductBought());
         invoice.setBuyer(order.getBuyer());

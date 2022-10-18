@@ -1,17 +1,11 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Shop {
     public static void main(String[] args) throws FileNotFoundException {
 
+
         ProductService productService = new ProductService();
-        Product product1 = productService.addProduct();
+        Product product1 = productService.addHammer();
 
         OrderService orderService = new OrderService();
         Order order1 = orderService.generateOrder("E:\\Shop Order.txt");

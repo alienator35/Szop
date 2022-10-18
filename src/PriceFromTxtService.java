@@ -10,19 +10,19 @@ public class PriceFromTxtService {
         String txtOrangeJuicePrice = scanTxt.nextLine();
         String txtAmogusBodyPillowPrice = scanTxt.nextLine();
 
-        String[] splittedHammerPrice = txtHammerPrice.split(" ");
+        String[] splittedHammerPrice = txtHammerPrice.split(": ");
         BigDecimal hammerPrice = new BigDecimal(splittedHammerPrice[1]);
         PriceFromTxt hammerPriceObject = new PriceFromTxt();
         hammerPriceObject.setProductName(splittedHammerPrice[0]);
         hammerPriceObject.setProductPrice(hammerPrice);
 
-        String[] splittedOrangeJuicePrice = txtOrangeJuicePrice.split(" ");
+        String[] splittedOrangeJuicePrice = txtOrangeJuicePrice.split(": ");
         BigDecimal orangeJuicePrice = new BigDecimal(splittedOrangeJuicePrice[1]);
         PriceFromTxt orangeJuicePriceObject = new PriceFromTxt();
         orangeJuicePriceObject.setProductName(splittedOrangeJuicePrice[0]);
         orangeJuicePriceObject.setProductPrice(orangeJuicePrice);
 
-        String[] splittedAmogusBodyPillowPrice = txtAmogusBodyPillowPrice.split(" ");
+        String[] splittedAmogusBodyPillowPrice = txtAmogusBodyPillowPrice.split(": ");
         BigDecimal amogusBodyPillowPrice = new BigDecimal(splittedAmogusBodyPillowPrice[1]);
         PriceFromTxt amogusBodyPillowPriceObject = new PriceFromTxt();
         amogusBodyPillowPriceObject.setProductName(splittedAmogusBodyPillowPrice[0]);
