@@ -1,45 +1,33 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PriceFromTxtService {
-    public PriceFromTxt[] fetchPriceFromTxt() throws FileNotFoundException {
-        Scanner scanTxt = new Scanner(new File("E:\\Products Price.txt"));
-        String txtHammerPrice = scanTxt.nextLine();
-        String txtOrangeJuicePrice = scanTxt.nextLine();
-        String txtAmogusBodyPillowPrice = scanTxt.nextLine();
+    public PriceFromTxt fetchPriceFromTxt(String productName) throws FileNotFoundException {
+        Scanner fileWithProductsPrice = new Scanner(new File("E:\\Products Price.txt"));
 
-        String[] splittedHammerPrice = txtHammerPrice.split(": ");
-        BigDecimal hammerPrice = new BigDecimal(splittedHammerPrice[1]);
-        PriceFromTxt hammerPriceObject = new PriceFromTxt();
-        hammerPriceObject.setProductName(splittedHammerPrice[0]);
-        hammerPriceObject.setProductPrice(hammerPrice);
+        List<PriceFromTxt> pricesFromTxt = new ArrayList<>();
 
-        String[] splittedOrangeJuicePrice = txtOrangeJuicePrice.split(": ");
-        BigDecimal orangeJuicePrice = new BigDecimal(splittedOrangeJuicePrice[1]);
-        PriceFromTxt orangeJuicePriceObject = new PriceFromTxt();
-        orangeJuicePriceObject.setProductName(splittedOrangeJuicePrice[0]);
-        orangeJuicePriceObject.setProductPrice(orangeJuicePrice);
+        while (fileWithProductsPrice.hasNextLine()) {
+            PriceFromTxt priceFromTxt = new PriceFromTxt();
 
-        String[] splittedAmogusBodyPillowPrice = txtAmogusBodyPillowPrice.split(": ");
-        BigDecimal amogusBodyPillowPrice = new BigDecimal(splittedAmogusBodyPillowPrice[1]);
-        PriceFromTxt amogusBodyPillowPriceObject = new PriceFromTxt();
-        amogusBodyPillowPriceObject.setProductName(splittedAmogusBodyPillowPrice[0]);
-        amogusBodyPillowPriceObject.setProductPrice(amogusBodyPillowPrice);
+            String[] productNameWithPrice = fileWithProductsPrice.nextLine().split(": "); // pobieram linijkę z pliku - i splituje to. Pierwszy element to nazwa, drugi to cena
+            priceFromTxt.setProductName(productNameWithPrice[0]);
+            priceFromTxt.setProductPrice(new BigDecimal(productNameWithPrice[1]));
 
-        PriceFromTxt[] objectPrices;
-        objectPrices = new PriceFromTxt[3];
+            pricesFromTxt.add(priceFromTxt);
+        }
 
-        objectPrices[0] = hammerPriceObject;
-        objectPrices[1] = orangeJuicePriceObject;
-        objectPrices[2] = amogusBodyPillowPriceObject;
-
-        return objectPrices;
-
-
+        for (PriceFromTxt priceFromTxt : pricesFromTxt) {
+            if (productName.equalsIgnoreCase(priceFromTxt.getProductName())) {
+                return priceFromTxt;
+            }
+        }
+        return null;
     }
-
 
 }
 
