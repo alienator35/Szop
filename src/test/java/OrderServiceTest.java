@@ -1,25 +1,36 @@
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class OrderServiceTest  {
-//    @Test
-//    void isShopOrderNamePatrykSzkutak() throws FileNotFoundException {
-//        OrderService orderService = new OrderService();
-//        Order order = new Order();
-//        order = orderService.generateOrder("E:\\Shop Order.txt");
-//
-//        assertEquals("Patryk Szkutakkk", order.getBuyer());
-//
-//    }
+
+public class OrderServiceTest {
+    @Test
+    public void ShouldGenerateOrderWhenOrderFileExistAndOrderIsComplete() throws FileNotFoundException {
+        OrderService orderService = new OrderService();
+
+        Order order = orderService.generateOrder("Shop Order.txt");
+
+        assertEquals("Patryk Szkutakkk", order.getBuyer());
+        assertEquals("Hammer", order.getProductBought());
+    }
 
     @Test
-    public void isTwoPlusTwoFour(){
-        var adding = new OrderService();
-        assertEquals(4,adding.add(2,2));
+    public void ShouldOrderNotFoundExceptionWhenGenerateOrderBadPath() throws OrderNotFoundException{
+        OrderService orderService = new OrderService();
 
+        Exception exception = assertThrows(OrderNotFoundException.class, () -> {
+            orderService.generateOrder("jakiś path zły, nie dobry, parszywy, niesprawiedliwy, niegodny, wir śmierdzielu");
+        });
+    }
+
+    @Test
+    public void ShouldOrderNotFoundExceptionWhenGenerateOrderNullPath() throws OrderNotFoundException{
+        OrderService orderService = new OrderService();
+        Exception exception2 = assertThrows(NullPointerException.class, () -> {
+            orderService.generateOrder(null);
+        });
     }
 }

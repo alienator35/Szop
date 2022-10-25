@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,8 @@ import java.util.Scanner;
 
 public class PriceFromTxtService {
     public PriceFromTxt fetchPriceFromTxt(String productName) throws FileNotFoundException {
-        Scanner fileWithProductsPrice = new Scanner(new File("E:\\Products Price.txt"));
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("Products Price.txt");
+        Scanner fileWithProductsPrice = new Scanner(is);
 
         List<PriceFromTxt> pricesFromTxt = new ArrayList<>();
 
