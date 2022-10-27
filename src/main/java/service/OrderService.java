@@ -1,5 +1,8 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+package service;
+
+import domain.*;
+import exception.*;
+
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -7,12 +10,16 @@ import java.util.Scanner;
 public class OrderService {
 
 
-    public Order generateOrder(String orderPath) throws FileNotFoundException {
+    public Order generateOrder(String orderPath) {
+        if (orderPath == null) {
+            throw new OrderNotFoundException("orderpath nie istnieje");
+        }
 
         InputStream is = this.getClass().getClassLoader().getResourceAsStream(orderPath);
 
+
         if (is == null) {
-            throw new OrderNotFoundException("Order pliku " + orderPath + " nie istnieje");
+            throw new OrderNotFoundException("domain.Order pliku " + orderPath + " nie istnieje");
         }
 
         Order newOrder = new Order();

@@ -1,9 +1,12 @@
+package service;
+import domain.*;
+
+
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class InvoiceService {
 
-    public Invoice generateInvoice(Product product,Order order) {
+    public Invoice generateInvoice(Product product, Order order) {
         Invoice invoice = new Invoice();
         invoice.setProductBought(order.getProductBought());
         invoice.setBuyer(order.getBuyer());

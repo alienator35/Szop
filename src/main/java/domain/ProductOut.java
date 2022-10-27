@@ -1,3 +1,5 @@
+package domain;
+
 public class ProductOut {
     private String productOutOfShop;
     private int quantityOutOfShop;

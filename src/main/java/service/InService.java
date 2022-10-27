@@ -1,3 +1,6 @@
+package service;
+import domain.*;
+
 public class InService {
 
     public ProductIn addItem(int howManyToAdd, String productName) {

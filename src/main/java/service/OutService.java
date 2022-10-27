@@ -1,3 +1,6 @@
+package service;
+import domain.*;
+
 public class OutService {
 
     public ProductOut removeItem(Product product, Invoice invoice){

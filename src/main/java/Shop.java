@@ -1,6 +1,7 @@
+import domain.*;
+import service.*;
+
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Shop {
     public static void main(String[] args) throws FileNotFoundException {

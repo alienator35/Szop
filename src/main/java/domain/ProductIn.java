@@ -1,3 +1,5 @@
+package domain;
+
 public class ProductIn {
     private String productIntoShop;
     private int quanityIntoShop;

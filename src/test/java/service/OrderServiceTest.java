@@ -1,3 +1,8 @@
+package service;
+
+import domain.Order;
+import exception.OrderNotFoundException;
+import service.OrderService;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -18,7 +23,7 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void ShouldOrderNotFoundExceptionWhenGenerateOrderBadPath() throws OrderNotFoundException{
+    public void ShouldOrderNotFoundExceptionWhenGenerateOrderBadPath() throws OrderNotFoundException {
         OrderService orderService = new OrderService();
 
         Exception exception = assertThrows(OrderNotFoundException.class, () -> {
@@ -29,7 +34,7 @@ public class OrderServiceTest {
     @Test
     public void ShouldOrderNotFoundExceptionWhenGenerateOrderNullPath() throws OrderNotFoundException{
         OrderService orderService = new OrderService();
-        Exception exception2 = assertThrows(NullPointerException.class, () -> {
+        Exception exception2 = assertThrows(OrderNotFoundException.class, () -> {
             orderService.generateOrder(null);
         });
     }

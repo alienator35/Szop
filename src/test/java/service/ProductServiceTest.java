@@ -1,3 +1,7 @@
+package service;
+
+import domain.Product;
+import service.ProductService;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

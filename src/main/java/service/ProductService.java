@@ -1,3 +1,6 @@
+package service;
+import domain.*;
+
 import java.io.FileNotFoundException;
 
 public class ProductService {
