@@ -1,6 +1,8 @@
 package service;
 
 import domain.Product;
+import exception.ArgumentNotFoundException;
+import exception.OrderNotFoundException;
 import service.ProductService;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +22,15 @@ class ProductServiceTest {
         assertEquals("Hammer", product.getProductName());
         assertEquals(new BigDecimal(10), product.getPrice());
     }
+
+    @Test
+    public void ShouldArgumentNotFoundExceptionWhenBadArgument() throws ArgumentNotFoundException {
+        var productService = new ProductService();
+        Exception exception = assertThrows(ArgumentNotFoundException.class, () -> {
+           productService.addProduct(null);
+        });
+    }
+
 
 
 }

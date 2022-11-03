@@ -32,7 +32,7 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void ShouldOrderNotFoundExceptionWhenGenerateOrderNullPath() throws OrderNotFoundException{
+    public void ShouldOrderNotFoundExceptionWhenGenerateOrderNullPath() throws OrderNotFoundException {
         OrderService orderService = new OrderService();
         Exception exception2 = assertThrows(OrderNotFoundException.class, () -> {
             orderService.generateOrder(null);
